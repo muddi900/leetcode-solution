@@ -18,3 +18,5 @@ class Solution:
 
 s = Solution()
 print(s.minOperations("001011"))
+
+# Brute Force solution(0fe98036bb0108e2c49c13fbf100ad5904d98759): Worked but the result was at the 22.84%
