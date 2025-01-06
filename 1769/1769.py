@@ -4,13 +4,20 @@ class Solution:
     def minOperations(self, boxes: str) -> List[int]:
         length = len(boxes)
         answer = [0] * length
-        for i in range(length):
-            for j in range(i+1,length):
-                if boxes[j] == "1":
-                    answer[i] += j - i
 
-                if boxes[i] == "1":
-                    answer[j] += j - i
+        i = 0
+        j = length - 1
+
+        while i < j:
+            if boxes[i] == "1":
+                answer[j] += j - i
+
+            if boxes[j] == "1":
+                answer[i] += j - i
+
+            i += 1
+            j -= 1
+       
 
         return answer
     
