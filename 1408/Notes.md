@@ -9,3 +9,8 @@
 # Go
 
 - Sorted map is the fastest solution in go as well.
+
+# TypeScript
+
+- Due to a quirk of JS, this is not the fastest solution you can have.
+- I am not bothering with optimizing it more.
