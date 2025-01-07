@@ -4,7 +4,7 @@ from collections import defaultdict
 class Solution:
     def stringMatching(self, words: list[str]) -> list[str]:
         matched = defaultdict(set)
-        answer = []
+        answer = set()
 
         for word in words:
             for match_word in words:
@@ -19,15 +19,18 @@ class Solution:
                     continue
 
                 if len(word) < len(match_word) and word in match_word:
-                    answer.append(word)
+                    answer.add(word)
 
                 if len(match_word) < len(word) and match_word in word:
-                    answer.append(match_word)
+                    answer.add(match_word)
 
                 matched[match_word].add(word)
                 matched[word].add(match_word)
 
-        return answer
+        return list(answer)
+
+
+# HashMap based solution solves all test cases(e1cafae21233179e285135c861ffc747f3988454).
 
 
 s = Solution()
