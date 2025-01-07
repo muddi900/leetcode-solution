@@ -3,34 +3,21 @@ from collections import defaultdict
 
 class Solution:
     def stringMatching(self, words: list[str]) -> list[str]:
-        matched = defaultdict(set)
+        sorted_words = sorted(words, key=lambda x: len(x), reverse=True)
         answer = set()
 
-        for word in words:
-            for match_word in words:
-
-                if any(
-                    [
-                        match_word == word,
-                        word in matched[match_word],
-                        match_word in matched[word],
-                    ]
-                ):
-                    continue
-
-                if len(word) < len(match_word) and word in match_word:
-                    answer.add(word)
-
-                if len(match_word) < len(word) and match_word in word:
+        for i, word in enumerate(sorted_words):
+            for j in range(i + 1, len(words)):
+                match_word = sorted_words[j]
+                if match_word in word:
                     answer.add(match_word)
-
-                matched[match_word].add(word)
-                matched[word].add(match_word)
 
         return list(answer)
 
 
 # HashMap based solution solves all test cases(e1cafae21233179e285135c861ffc747f3988454).
+# Solution is fairly fast but still at 93 percentile(3d6640f93a7c515a3f4fe8bd3dccc6672ef710a4). Clearly I am being naive somewhere.
+# The issue seems to be actual string matching, which is very slow.
 
 
 s = Solution()
