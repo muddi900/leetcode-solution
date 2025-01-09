@@ -19,6 +19,38 @@ func initTrie() *Trie {
 	return &Trie{root: NewNode()}
 }
 
+func (tr *Trie) Insert(word string) {
+	node := tr.root
+
+	for _, r := range word {
+		if _, exists := node.children[r]; !exists {
+			node.children[r] = NewNode()
+		}
+
+		node = node.children[r]
+	}
+
+	node.isEnd = true
+}
+
+func (tr *Trie) Search(word string) bool {
+	node := tr.root
+
+	for _, r := range word {
+		if _, exists := node.children[r]; !exists {
+			return false
+		}
+
+		node = node.children[r]
+	}
+
+	return true
+}
+
+func (tr *Trie) SearchReverse() {
+
+}
+
 func countPrefixSuffixPairs(words []string) int {
 
 	count := 0
