@@ -6,7 +6,7 @@ func isPrefixAndSuffix(ss string, s string) bool {
 	ssLength := len(ss)
 	sLength := len(s)
 
-	if ssLength >= sLength {
+	if ssLength > sLength {
 		return false
 	}
 
