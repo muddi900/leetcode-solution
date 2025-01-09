@@ -2,52 +2,15 @@ package main
 
 import "fmt"
 
-type Node struct {
-	children map[rune]*Node
-	isEnd    bool
-}
+func isPrefixAndSuffix(ss string, s string) bool {
+	ssLength := len(ss)
+	sLength := len(s)
 
-func NewNode() *Node {
-	return &Node{children: make(map[rune]*Node)}
-}
-
-type Trie struct {
-	root *Node
-}
-
-func initTrie() *Trie {
-	return &Trie{root: NewNode()}
-}
-
-func (tr *Trie) Insert(word string) {
-	node := tr.root
-
-	for _, r := range word {
-		if _, exists := node.children[r]; !exists {
-			node.children[r] = NewNode()
-		}
-
-		node = node.children[r]
+	if ssLength > sLength {
+		return false
 	}
 
-	node.isEnd = true
-}
-
-func (tr *Trie) Search(word string) bool {
-	node := tr.root
-
-	for _, r := range word {
-		if _, exists := node.children[r]; !exists {
-			return false
-		}
-
-		node = node.children[r]
-	}
-
-	return true
-}
-
-func (tr *Trie) SearchReverse() {
+	return s[:ssLength] == ss && s[sLength-ssLength:] == ss
 
 }
 
