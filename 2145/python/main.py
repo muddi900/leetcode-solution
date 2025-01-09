@@ -6,9 +6,6 @@ class Solution:
         count = 0
 
         for word in words:
-            if word == pref:
-                count += 1
-                continue
 
             if word[: len(pref)] == pref:
                 count += 1
