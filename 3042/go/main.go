@@ -2,16 +2,21 @@ package main
 
 import "fmt"
 
-func isPrefixAndSuffix(ss string, s string) bool {
-	ssLength := len(ss)
-	sLength := len(s)
+type Node struct {
+	children map[rune]*Node
+	isEnd    bool
+}
 
-	if ssLength > sLength {
-		return false
-	}
+func NewNode() *Node {
+	return &Node{children: make(map[rune]*Node)}
+}
 
-	return s[:ssLength] == ss && s[sLength-ssLength:] == ss
+type Trie struct {
+	root *Node
+}
 
+func initTrie() *Trie {
+	return &Trie{root: NewNode()}
 }
 
 func countPrefixSuffixPairs(words []string) int {
