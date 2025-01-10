@@ -1,16 +1,28 @@
 from typing import *
+from collections import Counter
 
 
 class Solution:
     def wordSubsets(self, words1: List[str], words2: List[str]) -> List[str]:
 
-        set1 = [set(w) for w in words1]
-        set2 = set("".join(words2))
-
         answer = []
-        for i, s in enumerate(set1):
-            if set2.issubset(s):
-                answer.append(words1[i])
+        counters1 = [None] * len(words1)
+        counters2 = [None] * len(words2)
+
+        for i, word in enumerate(words1):
+            flag = True
+            if counters1[i] is None:
+                counters1[i] = Counter(word)
+            for j, w in enumerate(words2):
+                if counters2[j] is None:
+                    counters2[j] = Counter(w)
+
+                if not counters2[j] & counters1[i] == counters2[j]:
+                    flag = False
+                    break
+
+            if flag:
+                answer.append(word)
 
         return answer
 
