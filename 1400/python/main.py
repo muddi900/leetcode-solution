@@ -12,13 +12,11 @@ class Solution:
 
         c = Counter(s)
 
-        p_count = sum([v for v in c.values() if v % 2 > 0])
+        p_count = len([v for v in c.values() if v % 2 > 0])
 
         return p_count <= k
 
 
 s = Solution()
 
-print(s.canConstruct(s="annabelle", k=2))
-print(s.canConstruct(s="leetcode", k=3))
-print(s.canConstruct(s="true", k=4))
+print(s.canConstruct(s="yzyzyzyzyzyzyzy", k=2))
