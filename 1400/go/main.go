@@ -2,21 +2,6 @@ package main
 
 import "fmt"
 
-type Counter map[rune]int
-
-func NewCounter(s string) Counter {
-	counter := make(Counter)
-	for _, c := range s {
-		if _, ok := counter[c]; !ok {
-			counter[c] = 1
-		} else {
-			counter[c]++
-		}
-	}
-
-	return counter
-}
-
 func canConstruct(s string, k int) bool {
 	if len(s) < k {
 		return false
@@ -25,8 +10,13 @@ func canConstruct(s string, k int) bool {
 	if len(s) == k {
 		return true
 	}
-	c := NewCounter(s)
+	c := make([]int, 26)
 	count := 0
+
+	for _, r := range s {
+		c[r-'a']++
+	}
+
 	for _, v := range c {
 		if v%2 > 0 {
 			count++
@@ -37,5 +27,7 @@ func canConstruct(s string, k int) bool {
 }
 
 func main() {
-	fmt.Println(canConstruct("cr", 7))
+	fmt.Println(canConstruct("annabelle", 2))
+	fmt.Println(canConstruct("leetcode", 3))
+	fmt.Println(canConstruct("true", 4))
 }
