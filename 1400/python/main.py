@@ -19,4 +19,4 @@ class Solution:
 
 s = Solution()
 
-print(s.canConstruct(s="yzyzyzyzyzyzyzy", k=2))
+print(s.canConstruct(s="cr", k=7))
