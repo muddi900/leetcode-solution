@@ -13,3 +13,9 @@ Counting odd number frequencies of characters because that is main property of a
 - The go solution works, but it is way slower for it.(ecec8d2604863ab8ad12b5ab1924f1620a41f080)
 - It is clear I need to implement the memoization version. The hashing algo is the bottleneck.
 - The memo method is the fastest for Go.
+
+
+# typescript
+
+- It is clear that the memo version is faster here as well.
+- Using regular `for` loop over `for-of` makes it more efficient.
