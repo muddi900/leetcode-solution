@@ -7,15 +7,10 @@ func minimumLength(s string) int {
 		return len(s)
 	}
 
-	counter := make(map[rune]int)
+	counter := make([]int, 26)
 
 	for _, r := range s {
-		if _, ok := counter[r]; !ok {
-			counter[r] = 1
-			continue
-		}
-
-		counter[r] += 1
+		counter[r-'a'] += 1
 	}
 
 	min_size := len(s)
