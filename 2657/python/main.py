@@ -5,12 +5,11 @@ class Solution:
     def findThePrefixCommonArray(self, A: List[int], B: List[int]) -> List[int]:
         map = set()
 
-        ans = []
+        n = len(A)
+        ans = [0] * n
 
-        for i, vals in enumerate(zip(A, B)):
-            a, b = vals
-
-            ans.append(0)
+        for i in range(n):
+            a, b = A[i], B[i]
 
             if a == b:
                 ans[i] += 1
