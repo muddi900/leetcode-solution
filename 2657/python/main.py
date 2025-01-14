@@ -3,29 +3,24 @@ from typing import *
 
 class Solution:
     def findThePrefixCommonArray(self, A: List[int], B: List[int]) -> List[int]:
-        map = set()
 
         n = len(A)
-        ans = [0] * n
+        map = [0] * (n + 1)
+        ans = []
+        count = 0
 
         for i in range(n):
             a, b = A[i], B[i]
 
-            if a == b:
-                ans[i] += 1
+            map[a] += 1
+            if map[a] == 2:
+                count += 1
 
-            if a in map:
-                ans[i] += 1
+            map[b] += 1
+            if map[b] == 2:
+                count += 1
 
-            if b in map:
-                ans[i] += 1
-
-            if i > 0:
-                ans[i] += ans[i - 1]
-
-            map.add(a)
-            if a != b:
-                map.add(b)
+            ans.append(count)
 
         return ans
 
