@@ -3,8 +3,7 @@ from typing import *
 
 class Solution:
     def findThePrefixCommonArray(self, A: List[int], B: List[int]) -> List[int]:
-        map_a = set()
-        map_b = set()
+        map = set()
 
         ans = []
 
@@ -16,17 +15,18 @@ class Solution:
             if a == b:
                 ans[i] += 1
 
-            if a in map_b:
+            if a in map:
                 ans[i] += 1
 
-            if b in map_a:
+            if b in map:
                 ans[i] += 1
 
             if i > 0:
                 ans[i] += ans[i - 1]
 
-            map_a.add(a)
-            map_b.add(b)
+            map.add(a)
+            if a != b:
+                map.add(b)
 
         return ans
 
