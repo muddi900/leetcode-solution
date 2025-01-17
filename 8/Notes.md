@@ -7,3 +7,4 @@ No.
 # go
 
 - The way go handles exponents is insane. There is no reason an `int` to an exponent should be a float. LAME!
+- MinInt32 shenanigans. (0fe9f6e13200eed3461b2607b4bb3fe965cddaef)

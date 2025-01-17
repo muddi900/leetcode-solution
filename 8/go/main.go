@@ -7,8 +7,8 @@ import (
 )
 
 func myAtoI(s string) int {
-	m := 1
-	ans := 0
+	var m int64 = 1
+	var ans int64 = 0
 	flag := false
 
 	// p := len(s) - 1
@@ -41,7 +41,7 @@ func myAtoI(s string) int {
 		if flag {
 			if isNum {
 				ans *= 10
-				ans += int(c - '0')
+				ans += int64(c - '0')
 			}
 
 			if !isNum {
@@ -58,7 +58,7 @@ func myAtoI(s string) int {
 		return math.MaxInt32
 	}
 
-	return m * ans
+	return int(m * ans)
 }
 
 func main() {
@@ -66,5 +66,5 @@ func main() {
 	// fmt.Println(myAtoI(" -042"))
 	// fmt.Println(myAtoI("1337c0d3"))
 	// fmt.Println(myAtoI("0-1"))
-	fmt.Println(myAtoI("20000000000000000000"))
+	fmt.Println(myAtoI("9223372036854775808"))
 }
