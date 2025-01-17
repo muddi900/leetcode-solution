@@ -11,9 +11,9 @@ func myAtoI(s string) int {
 	ans := 0
 	flag := false
 
-	p := len(s) - 1
+	// p := len(s) - 1
 
-	for i, c := range s {
+	for _, c := range s {
 		isNum := '0' <= c && c <= '9'
 
 		if !flag {
@@ -40,22 +40,22 @@ func myAtoI(s string) int {
 
 		if flag {
 			if isNum {
-				ans += int(c-'0') * int(math.Pow10(p-i))
+				ans *= 10
+				ans += int(c - '0')
 			}
 
 			if !isNum {
-				ans /= int(math.Pow10(len(s) - i))
 				break
 			}
 		}
 	}
 
-	if ans >= int(math.Pow(2, 31)) {
+	if ans >= math.MaxInt32 {
 		if m == -1 {
-			return -int(math.Pow(2, 31))
+			return math.MinInt32
 		}
 
-		return int(math.Pow(2, 31)) - 1
+		return math.MaxInt32
 	}
 
 	return m * ans
